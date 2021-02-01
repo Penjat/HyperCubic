@@ -52,9 +52,31 @@ public readonly struct HyperDirection {
     }
 
     public HyperDirection rotate(bool dir) {
-        Direction newFacing = this.toSide;
-        Direction newSide = this.facing;
+        Direction newFacing = dir ? this.toSide : DirectionOpposite(this.toSide);
+        Direction newSide = dir ? DirectionOpposite(this.facing) : this.facing;
         return new HyperDirection(newFacing, this.standing, newSide, this.unSeen);
+    }
+
+    static Direction DirectionOpposite(Direction direction){
+        switch(direction){
+            case Direction.east:
+            return Direction.west;
+            case Direction.west:
+            return Direction.east;
+            case Direction.up:
+            return Direction.down;
+            case Direction.down:
+            return Direction.up;
+            case Direction.left:
+            return Direction.right;
+            case Direction.right:
+            return Direction.left;
+            case Direction.north:
+            return Direction.south;
+            case Direction.south:
+            return Direction.north;
+        }
+        return direction;
     }
 }
 
