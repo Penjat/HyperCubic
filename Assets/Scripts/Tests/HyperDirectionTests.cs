@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.TestTools;
 
 public class HyperDirectionTests {
-    // A Test behaves as an ordinary method
     [Test]
     public void CanCreateHyperDirection() {
         HyperDirection dir = new HyperDirection(Direction.east, Direction.up, Direction.north, Direction.left);
@@ -82,5 +81,19 @@ public class HyperDirectionTests {
             dir = dir.rotate(true);
         }
         Assert.AreEqual(dir.facing, Direction.east);
+    }
+
+    [Test]
+    public void RotateLeftRight() {
+        HyperDirection dir = new HyperDirection(Direction.left, Direction.north, Direction.up, Direction.east);
+
+        HyperDirection newDir1 = dir.rotate(true);
+
+        Assert.AreEqual(newDir1.facing, Direction.up);
+        Assert.AreEqual(newDir1.toSide, Direction.right);
+
+        HyperDirection newDir2 = newDir1.rotate(true);
+        Assert.AreEqual(newDir2.facing, Direction.right);
+        Assert.AreEqual(newDir2.toSide, Direction.down);
     }
 }
