@@ -2,21 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MoveResut {
+public enum MoveResult {
     forward, downward, upward
 }
 
 public class GridManager {
 
-    public MoveResut moveResult() {
-        bool isFrontBlock = true;
-        bool isBelowBlock = true;
-
-        if (isFrontBlock) {
-            return MoveResut.upward;
-        } else if (isBelowBlock) {
-            return MoveResut.forward;
+    public MoveResult moveResult(bool frontBlocked, bool belowBlocked) {
+        if (frontBlocked) {
+            return MoveResult.upward;
+        } else if (belowBlocked) {
+            return MoveResult.forward;
         }
-        return MoveResut.downward;
+        return MoveResult.downward;
     }
 }
