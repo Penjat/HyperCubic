@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1440
     height: 850
-  m_MinSize: {x: 679, y: 463}
-  m_MaxSize: {x: 12004, y: 12063}
+  m_MinSize: {x: 679, y: 613}
+  m_MaxSize: {x: 14002, y: 18063}
   vertical: 0
-  controlID: 906
+  controlID: 1152
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -135,10 +135,10 @@ MonoBehaviour:
     y: 0
     width: 1154
     height: 850
-  m_MinSize: {x: 403, y: 463}
-  m_MaxSize: {x: 8003, y: 12063}
+  m_MinSize: {x: 403, y: 613}
+  m_MaxSize: {x: 10001, y: 18063}
   vertical: 1
-  controlID: 907
+  controlID: 1132
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 342}
   m_MaxSize: {x: 8003, y: 8042}
   vertical: 0
-  controlID: 876
+  controlID: 1133
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -220,7 +220,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: c4f4ffff22f5ffff40f5ffff22f6ffff2af7ffff48f7ffff22f8ffffaef8ffffcef8ffffacf9ffff3afbffff
+      m_ExpandedIDs: 0cf3ffffbcf3ffffdaf3ffffc4f4ffff22f5ffff40f5ffff22f6ffff2af7ffff48f7ffff22f8ffffaef8ffffcef8ffffacf9ffff3afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 877
+  controlID: 1111
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -527,7 +527,7 @@ MonoBehaviour:
     height: 364.5
   m_ViewDataDictionary: {fileID: 0}
   m_Spl:
-    ID: 965
+    ID: 1180
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes:
@@ -559,7 +559,7 @@ MonoBehaviour:
       name: HyperCubic
       fullName: HyperCubic
       resultStatus: 0
-      duration: 0.1131981
+      duration: 0.1144833
       messages: 
       output: 
       stacktrace: 
@@ -575,7 +575,7 @@ MonoBehaviour:
       name: Tests.dll
       fullName: /Users/spencersymington/Desktop/Projects/HyperCubic/Library/ScriptAssemblies/Tests.dll
       resultStatus: 0
-      duration: 0.0926608
+      duration: 0.0917932
       messages: 
       output: 
       stacktrace: 
@@ -591,7 +591,7 @@ MonoBehaviour:
       name: GridTests
       fullName: GridTests
       resultStatus: 0
-      duration: 0.0843774
+      duration: 0.0842785
       messages: 
       output: 
       stacktrace: 
@@ -602,46 +602,12 @@ MonoBehaviour:
       categories: []
       parentId: 1004
       parentUniqueId: '[Tests][/Users/spencersymington/Desktop/Projects/HyperCubic/Library/ScriptAssemblies/Tests.dll][suite]'
-    - id: 1003
-      uniqueId: Tests.dll/GridTests/[Tests][GridTests.GridTestsWithEnumeratorPasses]
-      name: GridTestsWithEnumeratorPasses
-      fullName: GridTests.GridTestsWithEnumeratorPasses
-      resultStatus: 0
-      duration: 0.0358826
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Tests.dll/[Tests][GridTests][suite]
-    - id: 1005
-      uniqueId: Tests.dll/GridTests/[Tests][GridTests.TestCanCreateHyperPositionXYZW]
-      name: TestCanCreateHyperPositionXYZW
-      fullName: GridTests.TestCanCreateHyperPositionXYZW
-      resultStatus: 0
-      duration: 0.0129704
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Tests.dll/[Tests][GridTests][suite]
     - id: 1004
       uniqueId: Tests.dll/GridTests/[Tests][GridTests.TestMoveDowardWhenNotBlockedAnywhere]
       name: TestMoveDowardWhenNotBlockedAnywhere
       fullName: GridTests.TestMoveDowardWhenNotBlockedAnywhere
       resultStatus: 0
-      duration: 0.0003414
+      duration: 0.000374
       messages: 
       output: 
       stacktrace: 
@@ -658,7 +624,7 @@ MonoBehaviour:
       name: TestMoveForwardWhenNotBlocked
       fullName: GridTests.TestMoveForwardWhenNotBlocked
       resultStatus: 0
-      duration: 0.0002449
+      duration: 0.00031
       messages: 
       output: 
       stacktrace: 
@@ -675,7 +641,7 @@ MonoBehaviour:
       name: TestMoveUpwardWhenBlocked
       fullName: GridTests.TestMoveUpwardWhenBlocked
       resultStatus: 0
-      duration: 0.000398
+      duration: 0.000287
       messages: 
       output: 
       stacktrace: 
@@ -687,7 +653,57 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: Tests.dll/[Tests][GridTests][suite]
-    m_ResultText: HyperCubic (0.113s)
+    - id: 1007
+      uniqueId: Tests.dll/[Tests][HyperPositionTests][suite]
+      name: HyperPositionTests
+      fullName: HyperPositionTests
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1010
+      parentUniqueId: '[Tests][/Users/spencersymington/Desktop/Projects/HyperCubic/Library/ScriptAssemblies/Tests.dll][suite]'
+    - id: 1008
+      uniqueId: Tests.dll/HyperPositionTests/[Tests][HyperPositionTests.HyperPositionTestsSimplePasses]
+      name: HyperPositionTestsSimplePasses
+      fullName: HyperPositionTests.HyperPositionTestsSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1007
+      parentUniqueId: Tests.dll/[Tests][HyperPositionTests][suite]
+    - id: 1009
+      uniqueId: Tests.dll/HyperPositionTests/[Tests][HyperPositionTests.HyperPositionTestsWithEnumeratorPasses]
+      name: HyperPositionTestsWithEnumeratorPasses
+      fullName: HyperPositionTests.HyperPositionTestsWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1007
+      parentUniqueId: Tests.dll/[Tests][HyperPositionTests][suite]
+    m_ResultText: HyperCubic (0.114s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
@@ -835,7 +851,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -844,14 +860,14 @@ MonoBehaviour:
     y: 530
     width: 1154
     height: 320
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 17}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -905,7 +921,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 1e3a0000
     m_LastClickedID: 14878
-    m_ExpandedIDs: 00000000143a0000
+    m_ExpandedIDs: 00000000143a00001a3a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -958,8 +974,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 283a0000
-    m_LastClickedInstanceID: 14888
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300000000000040250500102e00005831000076310000e8320000
     m_RenameOverlay:

@@ -3,36 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public readonly struct HyperPosition {
-    public readonly HyperDirection facing;
-    public readonly HyperDirection standing;
-    public readonly HyperDirection toSide;
-    public readonly HyperDirection  unSeen;
-    
-    public HyperPosition(XDirection facing, YDirection standing, ZDirection toSide, WDirection unSeen) {
-        this.facing = (facing == XDirection.east) ? HyperDirection.east : HyperDirection.west;
-        this.standing = (standing == YDirection.up) ? HyperDirection.up : HyperDirection.down;
-        this.toSide = (toSide == ZDirection.north) ? HyperDirection.north : HyperDirection.south;
-        this.unSeen = (unSeen == WDirection.left) ? HyperDirection.left : HyperDirection.right;
-    }
+    readonly int x;
+    readonly int y;
+    readonly int z;
+    readonly int w;
+}
 
-    public enum XDirection {
-        east, west
-    }
-    public enum YDirection {
-        up, down
-    }
-    public enum ZDirection {
-        north, south
-    }
-    public enum WDirection {
-        left, right
+public readonly struct HyperDirection {
+    public readonly Direction facing;
+    public readonly Direction standing;
+    public readonly Direction toSide;
+    public readonly Direction unSeen;
+
+    public HyperDirection(Direction facing, Direction standing, Direction toSide, Direction unSeen) {
+        this.facing = facing;
+        this.standing = standing;
+        this.toSide = toSide;
+        this.unSeen = unSeen;
     }
 }
 
-public enum HyperDirection {
+public enum Direction {
     east, west, up, down, north, south, left, right
 }
-
 
 enum WorldOrientations {
     xyz, xyw, yzw, xzw
