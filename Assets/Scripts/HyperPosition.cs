@@ -50,6 +50,12 @@ public readonly struct HyperDirection {
         this.toSide = toSide;
         this.unSeen = unSeen;
     }
+
+    public HyperDirection rotate(bool dir) {
+        Direction newFacing = this.toSide;
+        Direction newSide = this.facing;
+        return new HyperDirection(newFacing, this.standing, newSide, this.unSeen);
+    }
 }
 
 public enum Direction {
