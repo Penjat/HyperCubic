@@ -3,10 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public readonly struct HyperPosition {
-    readonly int x;
-    readonly int y;
-    readonly int z;
-    readonly int w;
+    readonly public int x;
+    readonly public int y;
+    readonly public int z;
+    readonly public int w;
+
+    public HyperPosition(int x, int y, int z, int w) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
+    }
+
+    public HyperPosition moveForward(Direction direction, int amount = 1) {
+        switch (direction) {
+            case Direction.east:
+                return new HyperPosition(this.x + amount, this.y, this.z, this.w);
+            case Direction.west:
+                return new HyperPosition(this.x - amount, this.y, this.z, this.w);
+            case Direction.up:
+                return new HyperPosition(this.x, this.y + amount, this.z, this.w);
+            case Direction.down:
+                return new HyperPosition(this.x, this.y - amount, this.z, this.w);
+            case Direction.north:
+                return new HyperPosition(this.x, this.y, this.z + amount, this.w);
+            case Direction.south:
+                return new HyperPosition(this.x, this.y, this.z - amount, this.w);
+            case Direction.left:
+                return new HyperPosition(this.x, this.y, this.z, this.w + amount);
+            case Direction.right:
+                return new HyperPosition(this.x, this.y, this.z, this.w - amount);
+        }
+        return this;
+    }
 }
 
 public readonly struct HyperDirection {

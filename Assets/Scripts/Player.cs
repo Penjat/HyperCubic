@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player {
-    HyperPosition position;
+    readonly public HyperPosition position;
+    readonly public HyperDirection direction;
+
+    public Player(HyperPosition position, HyperDirection direction) {
+        this.position = position;
+        this.direction = direction;
+    }
 
     public void move(MoveResult moveResult){
         switch (moveResult) {
@@ -11,7 +17,7 @@ public class Player {
             //check direction
             break;
             case MoveResult.forward:
-            //check direction
+            // position = HyperPosition(position.facing + 1, position.standing, position.toSide, position.unSeen);
             break;
             case MoveResult.downward:
             //check direction
