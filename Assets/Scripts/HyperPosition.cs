@@ -51,10 +51,17 @@ public readonly struct HyperDirection {
         this.unSeen = unSeen;
     }
 
-    public HyperDirection rotate(bool dir) {
-        Direction newFacing = dir ? this.toSide : DirectionOpposite(this.toSide);
-        Direction newSide = dir ? DirectionOpposite(this.facing) : this.facing;
-        return new HyperDirection(newFacing, this.standing, newSide, this.unSeen);
+    public HyperDirection rotate(PlayerRotation rotateDirection) {
+        switch (rotateDirection) {
+            case PlayerRotation.toRightSide:
+            return new HyperDirection(this.toSide, this.standing, DirectionOpposite(this.facing), this.unSeen);
+
+            case PlayerRotation.toLeftSide:
+            return new HyperDirection(DirectionOpposite(this.toSide), this.standing, this.facing, this.unSeen);
+
+            default:
+            return this;
+        }
     }
 
     static Direction DirectionOpposite(Direction direction){
@@ -78,6 +85,10 @@ public readonly struct HyperDirection {
         }
         return direction;
     }
+}
+
+public enum PlayerRotation {
+    toRightSide, toLeftSide, toGround, toSky, toUnseen
 }
 
 public enum Direction {
