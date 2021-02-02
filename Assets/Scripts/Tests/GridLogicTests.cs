@@ -4,12 +4,10 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class GridTests
-{
-    // A Test behaves as an ordinary method
+public class GridLogicTests {
+    // Basic Grid Logic Tests
     [Test]
-    public void TestMoveUpwardWhenBlocked()
-    {
+    public void TestMoveUpwardWhenBlocked() {
         GridManager gridmanager = new GridManager();
         MoveResult result1 = gridmanager.moveResult(true,true);
         Assert.AreEqual(MoveResult.upward, result1);
@@ -19,16 +17,14 @@ public class GridTests
     }
 
     [Test]
-    public void TestMoveForwardWhenNotBlocked()
-    {
+    public void TestMoveForwardWhenNotBlocked() {
         GridManager gridmanager = new GridManager();
         MoveResult result = gridmanager.moveResult(false,true);
         Assert.AreEqual(MoveResult.forward, result);
     }
 
     [Test]
-    public void TestMoveDowardWhenNotBlockedAnywhere()
-    {
+    public void TestMoveDowardWhenNotBlockedAnywhere() {
         GridManager gridmanager = new GridManager();
         MoveResult result = gridmanager.moveResult(false,false);
         Assert.AreEqual(MoveResult.downward, result);
