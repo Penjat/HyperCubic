@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum MoveResult {
-    forward, downward, upward
+    forward, downward, upward, toLeftSide, toRightSide, toUnseenRight, toUnseenLeft
 }
 
 public class GridManager {

@@ -11,17 +11,37 @@ public class Player {
         this.direction = direction;
     }
 
-    public void move(MoveResult moveResult){
+    public Player move(MoveResult moveResult){
         switch (moveResult) {
             case MoveResult.upward:
-            //check direction
+            this.direction = this.direction.rotate(PlayerRotation.toSky);
             break;
+
             case MoveResult.forward:
-            this.position = position.moveForward(direction.facing);
+            this.position = position.move(direction.facing);
             break;
+
             case MoveResult.downward:
-            //check direction
+            this.position = position.move(direction.facing).move(direction.standing, -1);
+            this.direction = direction.rotate(PlayerRotation.toGround);
+            break;
+
+            case MoveResult.toLeftSide:
+            this.direction = direction.rotate(PlayerRotation.toLeftSide);
+            break;
+
+            case MoveResult.toRightSide:
+            this.direction = direction.rotate(PlayerRotation.toRightSide);
+            break;
+
+            case MoveResult.toUnseenLeft:
+            this.direction = direction.rotate(PlayerRotation.toUnseenLeft);
+            break;
+
+            case MoveResult.toUnseenRight:
+            this.direction = direction.rotate(PlayerRotation.toUnseenRight);
             break;
         }
+        return this;
     }
 }
