@@ -95,4 +95,30 @@ public class HyperDirectionTests {
         Assert.AreEqual(newDir2.facing, Direction.right);
         Assert.AreEqual(newDir2.toSide, Direction.down);
     }
+
+    [Test]
+    public void RotateDownFromUp() {
+        //Given
+        HyperDirection dir = new HyperDirection(Direction.west, Direction.up, Direction.south, Direction.left);
+
+        //When
+        HyperDirection actual = dir.rotate(PlayerRotation.toGround);
+        HyperDirection expected = new HyperDirection(Direction.down, Direction.west, Direction.south, Direction.left);
+
+        //Then
+        Assert.AreEqual(expected, actual);
+    }
+
+    [Test]
+    public void RotateDownFromLeft() {
+        //Given
+        HyperDirection dir = new HyperDirection(Direction.left, Direction.west, Direction.south, Direction.down);
+
+        //When
+        HyperDirection actual = dir.rotate(PlayerRotation.toGround);
+        HyperDirection expected = new HyperDirection(Direction.east, Direction.left, Direction.south, Direction.down);
+
+        //Then
+        Assert.AreEqual(expected, actual);
+    }
 }

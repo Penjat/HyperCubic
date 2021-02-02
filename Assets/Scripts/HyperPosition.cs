@@ -38,7 +38,7 @@ public readonly struct HyperPosition {
     }
 }
 
-public readonly struct HyperDirection {
+public readonly struct HyperDirection: System.IEquatable<HyperDirection> {
     public readonly Direction facing;
     public readonly Direction standing;
     public readonly Direction toSide;
@@ -59,12 +59,13 @@ public readonly struct HyperDirection {
             case PlayerRotation.toLeftSide:
             return new HyperDirection(DirectionOpposite(this.toSide), this.standing, this.facing, this.unSeen);
 
-            default:
-            return this;
+            case PlayerRotation.toGround:
+            return new HyperDirection(DirectionOpposite(this.standing), this.facing, this.toSide, this.unSeen);;
         }
+        return this;
     }
 
-    static Direction DirectionOpposite(Direction direction){
+    static Direction DirectionOpposite(Direction direction) {
         switch(direction){
             case Direction.east:
             return Direction.west;
@@ -85,6 +86,16 @@ public readonly struct HyperDirection {
         }
         return direction;
     }
+
+    public static bool operator ==(HyperDirection x, HyperDirection y){
+      return x.facing == y.facing && x.standing == y.standing && x.toSide == y.toSide && x.unSeen == y.unSeen;
+   }
+   public static bool operator !=(HyperDirection x, HyperDirection y){
+      return !(x == y);
+   }
+   public bool Equals(HyperDirection other) {
+    return this.facing == other.facing && other.standing == other.standing && other.toSide == other.toSide && other.unSeen == other.unSeen;
+ }
 }
 
 public enum PlayerRotation {
