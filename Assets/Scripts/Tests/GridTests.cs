@@ -11,17 +11,26 @@ public class GridTests
     public void TestMoveUpwardWhenBlocked()
     {
         GridManager gridmanager = new GridManager();
-        MoveResut result = gridmanager.moveResult();
-        Assert.AreEqual(MoveResut.upward, result);
+        MoveResult result1 = gridmanager.moveResult(true,true);
+        Assert.AreEqual(MoveResult.upward, result1);
+
+        MoveResult result2 = gridmanager.moveResult(true,false);
+        Assert.AreEqual(MoveResult.upward, result2);
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator GridTestsWithEnumeratorPasses()
+    [Test]
+    public void TestMoveForwardWhenNotBlocked()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        GridManager gridmanager = new GridManager();
+        MoveResult result = gridmanager.moveResult(false,true);
+        Assert.AreEqual(MoveResult.forward, result);
+    }
+
+    [Test]
+    public void TestMoveDowardWhenNotBlockedAnywhere()
+    {
+        GridManager gridmanager = new GridManager();
+        MoveResult result = gridmanager.moveResult(false,false);
+        Assert.AreEqual(MoveResult.downward, result);
     }
 }
