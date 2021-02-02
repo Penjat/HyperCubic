@@ -15,7 +15,7 @@ public readonly struct HyperPosition {
         this.w = w;
     }
 
-    public HyperPosition moveForward(Direction direction, int amount = 1) {
+    public HyperPosition move(Direction direction, int amount = 1) {
         switch (direction) {
             case Direction.east:
                 return new HyperPosition(this.x + amount, this.y, this.z, this.w);
