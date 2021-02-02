@@ -177,7 +177,32 @@ public class HyperDirectionTests {
         //Then
         Assert.AreEqual(expected1, actual1);
         Assert.AreEqual(expected2, actual2);
-        Assert.AreEqual(expected3, actual3, ("actual 2 = " + actual2.discription() + "\nactual 3:" + actual3.discription() + " is not \n" + expected3.discription()));
+        Assert.AreEqual(expected3, actual3);
+        Assert.AreEqual(expected4, actual4);
+    }
+
+    [Test]
+    public void RotateToUnseenRight() {
+        //Given
+        HyperDirection dir = new HyperDirection(Direction.left, Direction.up, Direction.south, Direction.east);
+
+        //When
+        HyperDirection actual1 = dir.rotate(PlayerRotation.toUnseenRight);
+        HyperDirection expected1 = new HyperDirection(Direction.east, Direction.up, Direction.south, Direction.right);
+
+        HyperDirection actual2 = actual1.rotate(PlayerRotation.toUnseenRight);
+        HyperDirection expected2 = new HyperDirection(Direction.right, Direction.up, Direction.south, Direction.west);
+
+        HyperDirection actual3 = actual2.rotate(PlayerRotation.toUnseenRight);
+        HyperDirection expected3 = new HyperDirection(Direction.west, Direction.up, Direction.south, Direction.left);
+
+        HyperDirection actual4 = actual3.rotate(PlayerRotation.toUnseenRight);
+        HyperDirection expected4 = new HyperDirection(Direction.left, Direction.up, Direction.south, Direction.east);
+
+        //Then
+        Assert.AreEqual(expected1, actual1);
+        Assert.AreEqual(expected2, actual2);
+        Assert.AreEqual(expected3, actual3);
         Assert.AreEqual(expected4, actual4);
     }
 }

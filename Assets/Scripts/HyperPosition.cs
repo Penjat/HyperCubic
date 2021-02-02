@@ -60,10 +60,16 @@ public readonly struct HyperDirection: System.IEquatable<HyperDirection> {
             return new HyperDirection(DirectionOpposite(this.toSide), this.standing, this.facing, this.unSeen);
 
             case PlayerRotation.toGround:
-            return new HyperDirection(DirectionOpposite(this.standing), this.facing, this.toSide, this.unSeen);;
+            return new HyperDirection(DirectionOpposite(this.standing), this.facing, this.toSide, this.unSeen);
 
             case PlayerRotation.toSky:
-            return new HyperDirection(this.standing, DirectionOpposite(this.facing), this.toSide, this.unSeen);;
+            return new HyperDirection(this.standing, DirectionOpposite(this.facing), this.toSide, this.unSeen);
+
+            case PlayerRotation.toUnseenRight:
+            return new HyperDirection(this.unSeen, this.standing, this.toSide, DirectionOpposite(this.facing));
+
+            case PlayerRotation.toUnseenLeft:
+            return new HyperDirection(DirectionOpposite(this.unSeen), this.standing, this.toSide, this.facing);
         }
         return this;
     }
@@ -133,7 +139,7 @@ public readonly struct HyperDirection: System.IEquatable<HyperDirection> {
 }
 
 public enum PlayerRotation {
-    toRightSide, toLeftSide, toGround, toSky, toUnseen
+    toRightSide, toLeftSide, toGround, toSky, toUnseenLeft, toUnseenRight
 }
 
 public enum Direction {
