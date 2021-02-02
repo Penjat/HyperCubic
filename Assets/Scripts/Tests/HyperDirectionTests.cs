@@ -22,6 +22,7 @@ public class HyperDirectionTests {
         HyperDirection newDir = dir.rotate(PlayerRotation.toRightSide);
 
         Assert.AreEqual(dir.facing, Direction.east);
+
         Assert.AreEqual(newDir.standing, Direction.up);
         Assert.AreEqual(newDir.facing, Direction.north);
         Assert.AreEqual(newDir.toSide, Direction.west);
@@ -120,5 +121,63 @@ public class HyperDirectionTests {
 
         //Then
         Assert.AreEqual(expected, actual);
+    }
+
+    [Test]
+    public void RotateSkyFromStanding() {
+        //Given
+        HyperDirection dir = new HyperDirection(Direction.east, Direction.up, Direction.south, Direction.left);
+
+        //When
+        HyperDirection actual = dir.rotate(PlayerRotation.toSky);
+        HyperDirection expected = new HyperDirection(Direction.up, Direction.west, Direction.south, Direction.left);
+
+        //Then
+        Assert.AreEqual(expected, actual);
+    }
+
+    [Test]
+    public void RotateSkyFromLeftMultiple() {
+        //Given
+        HyperDirection dir = new HyperDirection(Direction.left, Direction.up, Direction.south, Direction.left);
+
+        //When
+        HyperDirection actual1 = dir.rotate(PlayerRotation.toSky);
+        HyperDirection expected1 = new HyperDirection(Direction.up, Direction.right, Direction.south, Direction.left);
+
+        HyperDirection actual2 = actual1.rotate(PlayerRotation.toSky);
+        HyperDirection expected2 = new HyperDirection(Direction.right, Direction.down, Direction.south, Direction.left);
+
+        HyperDirection actual3 = actual2.rotate(PlayerRotation.toSky);
+        HyperDirection expected3 = new HyperDirection(Direction.down, Direction.left, Direction.south, Direction.left);
+        //Then
+        Assert.AreEqual(expected1, actual1);
+        Assert.AreEqual(expected2, actual2);
+        Assert.AreEqual(expected3, actual3);
+    }
+
+    [Test]
+    public void RotateMultipleDirections() {
+        //Given
+        HyperDirection dir = new HyperDirection(Direction.left, Direction.up, Direction.south, Direction.east);
+
+        //When
+        HyperDirection actual1 = dir.rotate(PlayerRotation.toGround);
+        HyperDirection expected1 = new HyperDirection(Direction.down, Direction.left, Direction.south, Direction.east);
+
+        HyperDirection actual2 = actual1.rotate(PlayerRotation.toRightSide);
+        HyperDirection expected2 = new HyperDirection(Direction.south, Direction.left, Direction.up, Direction.east);
+
+        HyperDirection actual3 = actual2.rotate(PlayerRotation.toSky);
+        HyperDirection expected3 = new HyperDirection(Direction.left, Direction.north, Direction.up, Direction.east);
+
+        HyperDirection actual4 = actual3.rotate(PlayerRotation.toLeftSide);
+        HyperDirection expected4 = new HyperDirection(Direction.down, Direction.north, Direction.left, Direction.east);
+
+        //Then
+        Assert.AreEqual(expected1, actual1);
+        Assert.AreEqual(expected2, actual2);
+        Assert.AreEqual(expected3, actual3, ("actual 2 = " + actual2.discription() + "\nactual 3:" + actual3.discription() + " is not \n" + expected3.discription()));
+        Assert.AreEqual(expected4, actual4);
     }
 }
