@@ -18,7 +18,7 @@ public class Game {
         switch (intent) {
             case MoveIntent.forward:
             HyperPosition inFront = player.position.move(player.direction.facing);
-            HyperPosition inFrontBelow = inFront.move(player.direction.standing);
+            HyperPosition inFrontBelow = inFront.move(player.direction.standing, -1);
 
             if(hyperGrid.checkBlocked(inFront)) {
                 player.move(MoveResult.upward);
