@@ -36,6 +36,9 @@ public readonly struct HyperPosition {
         }
         return this;
     }
+    public string printOut() {
+        return "X: " + x + ". Y: " + y + ". Z: " + z + ". W: " + w;
+    }
 }
 
 public readonly struct HyperDirection: System.IEquatable<HyperDirection> {
