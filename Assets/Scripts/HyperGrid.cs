@@ -32,4 +32,15 @@ public class HyperGrid {
     public void setBlocked(int x, int y, int z, int w) {
         grid[x, y, z, w] = 1;
     }
+
+    //---------------------Easy Grid Creation, to be removed--------------
+    public static HyperGrid TenByTenPlatformAtWZero() {
+        HyperGrid hyperGrid = new HyperGrid(10,10,10,10);
+        for(int x=2;x<8;x++){
+            for(int z=2;z<8;z++){
+                hyperGrid.setBlocked(x,2,z,0);
+            }
+        }
+        return hyperGrid;
+    }
 }

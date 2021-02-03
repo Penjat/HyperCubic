@@ -10,7 +10,7 @@ public class GamePresenter : MonoBehaviour {
 
     void Start() {
         Debug.Log("Starting up.");
-        hyperGrid = new HyperGrid(10,10,10,10);
+        hyperGrid = HyperGrid.TenByTenPlatformAtWZero();
         gridPresenter.createGrid(hyperGrid);
     }
 
