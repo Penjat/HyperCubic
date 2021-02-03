@@ -17,7 +17,17 @@ public class Game {
     public void process(MoveIntent intent) {
         switch (intent) {
             case MoveIntent.forward:
-            //TODO: check grid and move player
+            HyperPosition inFront = player.position.move(player.direction.facing);
+            HyperPosition inFrontBelow = inFront.move(player.direction.standing);
+
+            if(hyperGrid.checkBlocked(inFront)) {
+                player.move(MoveResult.upward);
+            } else if (hyperGrid.checkBlocked(inFrontBelow)) {
+                player.move(MoveResult.forward);
+            } else {
+                player.move(MoveResult.downward);
+            }
+
             break;
 
             case MoveIntent.turnRightSide:
