@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GridPresenter : MonoBehaviour {
-    void Start() {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+    public GameObject blockPrefab;
+    public void createGrid() {
+        GameObject block = Instantiate(blockPrefab);
     }
 }
