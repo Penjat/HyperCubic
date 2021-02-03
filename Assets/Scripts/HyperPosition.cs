@@ -149,6 +149,6 @@ public enum Direction {
     east, west, up, down, north, south, left, right
 }
 
-enum WorldOrientations {
+enum WorldOrientation {
     xyz, xyw, yzw, xzw
 }

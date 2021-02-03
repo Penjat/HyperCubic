@@ -15,9 +15,17 @@ public class GridPresenter : MonoBehaviour {
                 for(int z=0;z<10;z++){
                 GameObject block = Instantiate(blockPrefab);
                 blockPrefab.transform.position = new Vector3(x*Constants.gridSpacing,y*Constants.gridSpacing,z*Constants.gridSpacing);
-                block.SetActive(hyperGrid.checkBlocked(x,y,z,0));
+                block.SetActive(checkBlockedForDirection(hyperGrid,WorldOrientation.xyz,x,y,z,0));
                 }
             }
         }
+    }
+
+    private bool checkBlockedForDirection(HyperGrid hyperGrid, WorldOrientation dir, int x, int y, int z, int w) {
+        switch (dir) {
+            case WorldOrientation.xyz:
+            return hyperGrid.checkBlocked(x,y,z,0);
+        }
+        return false;
     }
 }
