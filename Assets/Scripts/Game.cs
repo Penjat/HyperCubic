@@ -1,5 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+
+public enum MoveIntent {
+    forward, turnRightSide, turnLeftSide, turnRightUnseen, turnLeftUnseen
+}
 
 public class Game {
     Player player;
@@ -7,5 +12,29 @@ public class Game {
     public Game(Player player, HyperGrid hyperGrid) {
         this.player = player;
         this.hyperGrid = hyperGrid;
+    }
+
+    public void process(MoveIntent intent) {
+        switch (intent) {
+            case MoveIntent.forward:
+            //TODO: check grid and move player
+            break;
+
+            case MoveIntent.turnRightSide:
+            player.move(MoveResult.toRightSide);
+            break;
+
+            case MoveIntent.turnLeftSide:
+            player.move(MoveResult.toLeftSide);
+            break;
+
+            case MoveIntent.turnRightUnseen:
+            player.move(MoveResult.toUnseenRight);
+            break;
+
+            case MoveIntent.turnLeftUnseen:
+            player.move(MoveResult.toUnseenLeft);
+            break;
+        }
     }
 }
