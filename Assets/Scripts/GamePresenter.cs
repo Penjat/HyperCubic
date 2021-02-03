@@ -11,7 +11,7 @@ public class GamePresenter : MonoBehaviour {
     void Start() {
         Debug.Log("Starting up.");
         hyperGrid = HyperGrid.TenByTenPlatformAtWZero();
-        gridPresenter.createGrid(hyperGrid);
+        gridPresenter.createGrid(hyperGrid, new GridSlice(WorldOrientation.xyz,0));
     }
 
     void Update() {

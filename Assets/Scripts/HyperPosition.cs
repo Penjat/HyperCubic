@@ -149,6 +149,15 @@ public enum Direction {
     east, west, up, down, north, south, left, right
 }
 
-enum WorldOrientation {
+public enum WorldOrientation {
     xyz, xyw, yzw, xzw
+}
+
+public struct GridSlice {
+    public WorldOrientation worldOrientation;
+    public int unseenDepth;
+    public GridSlice(WorldOrientation worldOrientation,int unseenDepth) {
+        this.worldOrientation = worldOrientation;
+        this.unseenDepth = unseenDepth;
+    }
 }
