@@ -6,7 +6,9 @@ public class GamePresenter : MonoBehaviour {
     private Game game;
     private Player player;
     private HyperGrid hyperGrid;
+
     public GridPresenter gridPresenter;
+    public PlayerPresenter playerPresenter;
 
     void Start() {
         Debug.Log("Starting up.");
