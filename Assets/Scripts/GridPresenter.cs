@@ -34,4 +34,7 @@ public class GridPresenter : MonoBehaviour {
         }
         return false;
     }
+    public void placeSomething(GameObject item, int x, int y, int z) {
+        item.transform.position = new Vector3(x*Constants.gridSpacing,y*Constants.gridSpacing,z*Constants.gridSpacing);
+    }
 }
