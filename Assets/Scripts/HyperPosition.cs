@@ -130,6 +130,10 @@ public readonly struct HyperDirection: System.IEquatable<HyperDirection> {
         }
         return "error";
     }
+
+    public HyperDirection NormalPosition() {
+        return new HyperDirection(Direction.East, Direction.Up, Direction.North, Direction.South);
+    }
     public static bool operator ==(HyperDirection x, HyperDirection y){
       return x.facing == y.facing && x.standing == y.standing && x.toSide == y.toSide && x.unSeen == y.unSeen;
     }
