@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridPresenter : MonoBehaviour {
     private struct Constants {
-        public static float gridSpacing = 1.01f;
+        public static float gridSpacing = 1.0f;
     }
 
     public GameObject blockPrefab;
@@ -14,7 +14,7 @@ public class GridPresenter : MonoBehaviour {
             for(int y=0;y<10;y++){
                 for(int z=0;z<10;z++){
                 GameObject block = Instantiate(blockPrefab);
-                blockPrefab.transform.position = new Vector3(x*Constants.gridSpacing,y*Constants.gridSpacing,z*Constants.gridSpacing);
+                block.transform.position = new Vector3(x*Constants.gridSpacing,y*Constants.gridSpacing,z*Constants.gridSpacing);
                 block.SetActive(checkBlockedForDirection(hyperGrid,slice.worldOrientation,x,y,z,slice.unseenDepth));
                 }
             }

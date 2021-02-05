@@ -41,6 +41,8 @@ public class HyperGrid {
                 hyperGrid.setBlocked(x,2,z,0);
             }
         }
+        hyperGrid.setBlocked(0,0,0,0);
+
         return hyperGrid;
     }
 }

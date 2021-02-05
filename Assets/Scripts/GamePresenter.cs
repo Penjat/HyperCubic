@@ -14,7 +14,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         Debug.Log("Starting up.");
 
 
-        HyperPosition startPosition = new HyperPosition(3,3,3,0);
+        HyperPosition startPosition = new HyperPosition(2,3,2,0);
         player = new Player(startPosition, HyperDirection.normal);
         hyperGrid = HyperGrid.TenByTenPlatformAtWZero();
         game = new Game(player, hyperGrid);
