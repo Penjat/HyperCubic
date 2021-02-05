@@ -12,9 +12,13 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
 
     void Start() {
         Debug.Log("Starting up.");
-        HyperPosition startPosition = new HyperPosition(1,1,6,0);
+
+
+        HyperPosition startPosition = new HyperPosition(3,3,3,0);
         player = new Player(startPosition, HyperDirection.normal);
         hyperGrid = HyperGrid.TenByTenPlatformAtWZero();
+        game = new Game(player, hyperGrid);
+
         gridPresenter.createGrid(hyperGrid, new GridSlice(WorldOrientation.xyz,0));
         gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
     }
@@ -24,18 +28,23 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         switch(input) {
             case ButtonInput.forward:
                 game.process(MoveIntent.forward);
+                gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
                 break;
             case ButtonInput.left:
                 game.process(MoveIntent.turnLeftSide);
+                gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
                 break;
             case ButtonInput.right:
                 game.process(MoveIntent.turnRightSide);
+                gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
                 break;
             case ButtonInput.unseenLeft:
                 game.process(MoveIntent.turnLeftUnseen);
+                gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
                 break;
             case ButtonInput.unseenRight:
                 game.process(MoveIntent.turnRightUnseen);
+                gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
                 break;
         }
     }
