@@ -13,8 +13,8 @@ public class GridPresenter : MonoBehaviour {
         for(int x=0;x<10;x++){
             for(int y=0;y<10;y++){
                 for(int z=0;z<10;z++){
-                GameObject block = Instantiate(blockPrefab);
-                blockPrefab.transform.position = new Vector3(x*Constants.gridSpacing,y*Constants.gridSpacing,z*Constants.gridSpacing);
+                GameObject block = Instantiate(blockPrefab) as GameObject;
+                block.transform.position = new Vector3(x*Constants.gridSpacing,y*Constants.gridSpacing,z*Constants.gridSpacing);
                 block.SetActive(checkBlockedForDirection(hyperGrid,slice.worldOrientation,x,y,z,slice.unseenDepth));
                 }
             }
@@ -33,5 +33,8 @@ public class GridPresenter : MonoBehaviour {
             return hyperGrid.checkBlocked(x,z,w,y);
         }
         return false;
+    }
+    public void placeSomething(GameObject item, int x, int y, int z) {
+        item.transform.position = new Vector3(x*Constants.gridSpacing,y*Constants.gridSpacing,z*Constants.gridSpacing);
     }
 }
