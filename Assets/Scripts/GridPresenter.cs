@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridPresenter : MonoBehaviour {
     private struct Constants {
-        public static float gridSpacing = 1.0f;
+        public static float gridSpacing = 1.01f;
     }
 
     public GameObject blockPrefab;

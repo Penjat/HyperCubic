@@ -16,7 +16,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
 
         HyperPosition startPosition = new HyperPosition(2,3,2,0);
         player = new Player(startPosition, HyperDirection.normal);
-        hyperGrid = HyperGrid.TenByTenPlatformAtWZero();
+        hyperGrid = HyperGrid.TenByTenPyramid();
         game = new Game(player, hyperGrid);
 
         gridPresenter.createGrid(hyperGrid, new GridSlice(WorldOrientation.xyz,0));

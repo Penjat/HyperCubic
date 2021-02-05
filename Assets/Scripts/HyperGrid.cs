@@ -43,4 +43,33 @@ public class HyperGrid {
         }
         return hyperGrid;
     }
+
+    public static HyperGrid TenByTenCube() {
+        HyperGrid hyperGrid = new HyperGrid(10,10,10,10);
+        for(int x=2;x<8;x++){
+            for(int z=2;z<8;z++){
+                for(int y=2;y<8;y++){
+                    hyperGrid.setBlocked(x,y,z,0);
+                }
+            }
+        }
+        return hyperGrid;
+    }
+
+    public static HyperGrid TenByTenPyramid() {
+        HyperGrid hyperGrid = new HyperGrid(10,10,10,10);
+        int baseStart = 2;
+        int baseEnd = 8;
+        for(int y=2;y<8;y++){
+            for(int x=baseStart;x<baseEnd;x++){
+                for(int z=baseStart;z<baseEnd;z++){
+
+                    hyperGrid.setBlocked(x,y,z,0);
+                }
+            }
+            baseStart++;
+            baseEnd--;
+        }
+        return hyperGrid;
+    }
 }
