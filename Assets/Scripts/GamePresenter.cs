@@ -35,11 +35,11 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
                 break;
             case ButtonInput.unseenLeft:
                 game.process(MoveIntent.turnLeftUnseen);
-                gridPresenter.changeOrientation();
+                gridPresenter.changeOrientation(hyperGrid, new GridSlice(WorldOrientation.yzw,0));
                 break;
             case ButtonInput.unseenRight:
                 game.process(MoveIntent.turnRightUnseen);
-                gridPresenter.changeOrientation();
+                gridPresenter.changeOrientation(hyperGrid, new GridSlice(WorldOrientation.xyw,0));
                 break;
         }
         gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
