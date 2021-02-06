@@ -17,7 +17,8 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         hyperGrid = HyperGrid.TenByTenPyramid();
         game = new Game(player, hyperGrid);
 
-        gridPresenter.createGrid(hyperGrid, new GridSlice(WorldOrientation.xyz,0));
+
+        gridPresenter.createGrid(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
         gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
     }
 
@@ -35,11 +36,11 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
                 break;
             case ButtonInput.unseenLeft:
                 game.process(MoveIntent.turnLeftUnseen);
-                gridPresenter.changeOrientation(hyperGrid, new GridSlice(WorldOrientation.yzw,0));
+                gridPresenter.changeOrientation(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
                 break;
             case ButtonInput.unseenRight:
                 game.process(MoveIntent.turnRightUnseen);
-                gridPresenter.changeOrientation(hyperGrid, new GridSlice(WorldOrientation.xyw,0));
+                gridPresenter.changeOrientation(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
                 break;
         }
         gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);

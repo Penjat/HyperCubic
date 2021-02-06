@@ -23,4 +23,25 @@ public class PlayerPresenter : MonoBehaviour {
         }
         transform.rotation = Quaternion.Euler(x, y, z);
     }
+
+    public GridSlice orientationForDirection(HyperDirection hyperDirection, HyperPosition hyperPosition){
+        switch(hyperDirection.unSeen){
+            case Direction.left:
+            case Direction.right:
+            return new GridSlice(WorldOrientation.xyz, hyperPosition.w);
+
+            case Direction.north:
+            case Direction.south:
+            return new GridSlice(WorldOrientation.xyw, hyperPosition.z);
+
+            case Direction.east:
+            case Direction.west:
+            return new GridSlice(WorldOrientation.yzw, hyperPosition.x);
+
+            case Direction.up:
+            case Direction.down:
+            return new GridSlice(WorldOrientation.xzw, hyperPosition.y);
+        }
+        return new GridSlice(WorldOrientation.xyz, hyperPosition.w);;
+    }
 }
