@@ -28,24 +28,21 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         switch(input) {
             case ButtonInput.forward:
                 game.process(MoveIntent.forward);
-                gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
                 break;
             case ButtonInput.left:
                 game.process(MoveIntent.turnLeftSide);
-                gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
                 break;
             case ButtonInput.right:
                 game.process(MoveIntent.turnRightSide);
-                gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
                 break;
             case ButtonInput.unseenLeft:
                 game.process(MoveIntent.turnLeftUnseen);
-                gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
                 break;
             case ButtonInput.unseenRight:
                 game.process(MoveIntent.turnRightUnseen);
-                gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
                 break;
         }
+        gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
+        playerPresenter.rotateToFace(player.direction);
     }
 }
