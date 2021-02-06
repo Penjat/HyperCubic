@@ -21,6 +21,11 @@ public class GridPresenter : MonoBehaviour {
         }
     }
 
+    public void changeOrientation(){
+        print("is time to change orientation.");
+        
+    }
+
     private bool checkBlockedForDirection(HyperGrid hyperGrid, WorldOrientation dir, int x, int y, int z, int w) {
         switch (dir) {
             case WorldOrientation.xyz:

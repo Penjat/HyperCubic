@@ -27,7 +27,6 @@ public class Game {
             } else {
                 player.move(MoveResult.downward);
             }
-
             break;
 
             case MoveIntent.turnRightSide:
