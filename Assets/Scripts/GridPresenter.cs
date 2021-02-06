@@ -5,6 +5,9 @@ using UnityEngine;
 public class GridPresenter : MonoBehaviour {
     private struct Constants {
         public static float gridSpacing = 1.01f;
+        public static int sizeX = 10;
+        public static int sizeY = 10;
+        public static int sizeZ = 10;
     }
 
     public GameObject blockPrefab;
@@ -12,9 +15,9 @@ public class GridPresenter : MonoBehaviour {
 
     public void createGrid(HyperGrid hyperGrid, GridSlice slice) {
         blocks = new GameObject[10,10,10];
-        for(int x=0;x<10;x++){
-            for(int y=0;y<10;y++){
-                for(int z=0;z<10;z++){
+        for(int x=0;x<Constants.sizeX;x++){
+            for(int y=0;y<Constants.sizeY;y++){
+                for(int z=0;z<Constants.sizeZ;z++){
                 GameObject block = Instantiate(blockPrefab) as GameObject;
                 block.transform.position = new Vector3(x*Constants.gridSpacing,y*Constants.gridSpacing,z*Constants.gridSpacing);
                 block.SetActive(checkBlockedForDirection(hyperGrid,slice.worldOrientation,x,y,z,slice.unseenDepth));
@@ -26,9 +29,9 @@ public class GridPresenter : MonoBehaviour {
 
     public void changeOrientation(HyperGrid hyperGrid, GridSlice slice){
         print("is time to change orientation.");
-        for(int x=0;x<10;x++){
-            for(int y=0;y<10;y++){
-                for(int z=0;z<10;z++){
+        for(int x=0;x<Constants.sizeX;x++){
+            for(int y=0;y<Constants.sizeY;y++){
+                for(int z=0;z<Constants.sizeZ;z++){
                     GameObject block = blocks[x,y,z];
                     block.SetActive(checkBlockedForDirection(hyperGrid,slice.worldOrientation,x,y,z,slice.unseenDepth));
                 }
