@@ -42,6 +42,6 @@ public class PlayerPresenter : MonoBehaviour {
             case Direction.down:
             return new GridSlice(WorldOrientation.xzw, hyperPosition.y);
         }
-        return new GridSlice(WorldOrientation.xyz, hyperPosition.w);;
+        return new GridSlice(WorldOrientation.xyz, hyperPosition.w);
     }
 }

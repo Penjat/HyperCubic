@@ -11,7 +11,6 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     public PlayerPresenter playerPresenter;
 
     void Start() {
-        Debug.Log("Starting up.");
         HyperPosition startPosition = new HyperPosition(2,3,2,0);
         player = new Player(startPosition, HyperDirection.normal);
         hyperGrid = HyperGrid.TenByTenPyramid();
@@ -23,7 +22,6 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     }
 
     public void process(ButtonInput input) {
-        Debug.Log("Delegate recieved input.");
         switch(input) {
             case ButtonInput.forward:
                 game.process(MoveIntent.forward);
@@ -43,7 +41,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
                 gridPresenter.changeOrientation(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
                 break;
         }
-        gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
-        playerPresenter.rotateToFace(player.direction);
+        gridPresenter.placeItemFor(playerPresenter.gameObject,player.position,playerPresenter.orientationForDirection(player.direction, player.position).worldOrientation);
+        // playerPresenter.rotateToFace(player.direction);
     }
 }
