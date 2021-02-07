@@ -9,13 +9,14 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
 
     public GridPresenter gridPresenter;
     public PlayerPresenter playerPresenter;
+    public GoalPresenter goalPresenter;
 
     void Start() {
         HyperPosition startPosition = new HyperPosition(2,3,2,0);
         player = new Player(startPosition, HyperDirection.normal);
         hyperGrid = HyperGrid.TenByTenPyramid();
-        game = new Game(player, hyperGrid);
-
+        HyperPosition winPosition = new HyperPosition(6,3,2,0);
+        game = new Game(player, hyperGrid,winPosition);
 
         gridPresenter.createGrid(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
         gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
@@ -42,6 +43,10 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
                 break;
         }
         gridPresenter.placeItemFor(playerPresenter.gameObject,player.position,playerPresenter.orientationForDirection(player.direction, player.position).worldOrientation);
+        //TODO: to be fixed once movement system
+        if(game.checkWon()){
+            Debug.Log("You Won!!!!");
+        }
         // playerPresenter.rotateToFace(player.direction);
     }
 }
