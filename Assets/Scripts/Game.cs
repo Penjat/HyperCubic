@@ -9,6 +9,7 @@ public enum MoveIntent {
 public class Game {
     Player player;
     HyperGrid hyperGrid;
+    private HyperPosition levelGoal = new HyperPosition(4,4,4,0);
     public Game(Player player, HyperGrid hyperGrid) {
         this.player = player;
         this.hyperGrid = hyperGrid;
@@ -44,6 +45,12 @@ public class Game {
             case MoveIntent.turnLeftUnseen:
             player.move(MoveResult.toUnseenLeft);
             break;
+        }
+    }
+
+    public void checkWon() {
+        if (player.position == levelGoal) {
+            
         }
     }
 }
