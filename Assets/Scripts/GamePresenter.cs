@@ -9,6 +9,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
 
     public GridPresenter gridPresenter;
     public PlayerPresenter playerPresenter;
+    public GoalPresenter goalPresenter;
 
     void Start() {
         HyperPosition startPosition = new HyperPosition(2,3,2,0);
