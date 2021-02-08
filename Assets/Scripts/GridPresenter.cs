@@ -12,6 +12,17 @@ public class GridPresenter : MonoBehaviour {
 
     public GameObject blockPrefab;
     public GameObject[,,] blocks;
+    private List<Piece> gamePieces = new List<Piece>();
+
+    public void addPiece(Piece piece) {
+        gamePieces.Add(piece);
+    }
+
+    public void UpdateShownPieces(GridSlice gridSlice) {
+        foreach(Piece piece in gamePieces) {
+            placeItemFor(piece.gameObject, piece.hyperPosition, gridSlice);
+        }
+    }
 
     public void createGrid(HyperGrid hyperGrid, GridSlice slice) {
         blocks = new GameObject[10,10,10];
@@ -53,8 +64,8 @@ public class GridPresenter : MonoBehaviour {
         return false;
     }
 
-    public void placeItemFor(GameObject item, HyperPosition hyperPosition, WorldOrientation orientation) {
-        switch(orientation){
+    public void placeItemFor(GameObject item, HyperPosition hyperPosition, GridSlice gridSlice) {
+        switch(gridSlice.worldOrientation){
             case WorldOrientation.xyz:
                 placeSomething(item, hyperPosition.x, hyperPosition.y, hyperPosition.z);
                 break;

@@ -42,7 +42,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
                 gridPresenter.changeOrientation(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
                 break;
         }
-        gridPresenter.placeItemFor(playerPresenter.gameObject,player.position,playerPresenter.orientationForDirection(player.direction, player.position).worldOrientation);
+        gridPresenter.placeItemFor(playerPresenter.gameObject,player.position,playerPresenter.orientationForDirection(player.direction, player.position));
         //TODO: to be fixed once movement system
         if(game.checkWon()){
             Debug.Log("You Won!!!!");
