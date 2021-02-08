@@ -12,6 +12,17 @@ public class GridPresenter : MonoBehaviour {
 
     public GameObject blockPrefab;
     public GameObject[,,] blocks;
+    private List<PiecePresenter> gamePieces = new List<PiecePresenter>();
+
+    public void addPiece(PiecePresenter piece) {
+        gamePieces.Add(piece);
+    }
+
+    public void UpdateShownPieces(GridSlice gridSlice) {
+        foreach(PiecePresenter piece in gamePieces) {
+            placeItemFor(piece, gridSlice);
+        }
+    }
 
     public void createGrid(HyperGrid hyperGrid, GridSlice slice) {
         blocks = new GameObject[10,10,10];
@@ -53,20 +64,43 @@ public class GridPresenter : MonoBehaviour {
         return false;
     }
 
-    public void placeItemFor(GameObject item, HyperPosition hyperPosition, WorldOrientation orientation) {
-        switch(orientation){
+    public void placeItemFor(PiecePresenter piece, GridSlice gridSlice) {
+        switch(gridSlice.worldOrientation){
             case WorldOrientation.xyz:
-                placeSomething(item, hyperPosition.x, hyperPosition.y, hyperPosition.z);
-                break;
+            if(piece.hyperPosition.w != gridSlice.unseenDepth){
+                piece.SetSeen(false);
+                return;
+            }
+            piece.SetSeen(true);
+            placeSomething(piece.gameObject, piece.hyperPosition.x, piece.hyperPosition.y, piece.hyperPosition.z);
+            break;
+
             case WorldOrientation.xyw:
-                placeSomething(item, hyperPosition.x, hyperPosition.y, hyperPosition.w);
-                break;
+            if(piece.hyperPosition.z != gridSlice.unseenDepth){
+                piece.SetSeen(false);
+                return;
+            }
+            piece.SetSeen(true);
+            placeSomething(piece.gameObject, piece.hyperPosition.x, piece.hyperPosition.y, piece.hyperPosition.w);
+            break;
+
             case WorldOrientation.xzw:
-                placeSomething(item, hyperPosition.x, hyperPosition.w, hyperPosition.z);
-                break;
+            if(piece.hyperPosition.y != gridSlice.unseenDepth){
+                piece.SetSeen(false);
+                return;
+            }
+            piece.SetSeen(true);
+            placeSomething(piece.gameObject, piece.hyperPosition.x, piece.hyperPosition.w, piece.hyperPosition.z);
+            break;
+
             case WorldOrientation.yzw:
-                placeSomething(item, hyperPosition.w, hyperPosition.y, hyperPosition.z);
-                break;
+            if(piece.hyperPosition.x != gridSlice.unseenDepth){
+                piece.SetSeen(false);
+                return;
+            }
+            piece.SetSeen(true);
+            placeSomething(piece.gameObject, piece.hyperPosition.w, piece.hyperPosition.y, piece.hyperPosition.z);
+            break;
         }
     }
     public void placeSomething(GameObject item, int x, int y, int z) {

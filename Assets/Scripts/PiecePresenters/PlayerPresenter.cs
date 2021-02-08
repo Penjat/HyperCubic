@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPresenter : MonoBehaviour {
+public class PlayerPresenter : PiecePresenter {
     public void rotateToFace(HyperDirection hyperDirection) {
         float x = 0;
         float y = 0;
         float z = 0;
+
         switch (hyperDirection.standing){
             case Direction.east:
             z = 90.0f;
