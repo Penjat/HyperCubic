@@ -4,4 +4,7 @@ using UnityEngine;
 
 public class PiecePresenter : MonoBehaviour {
     public HyperPosition hyperPosition;
+    public void SetSeen(bool isSeen) {
+        gameObject.SetActive(isSeen);
+    }
 }
