@@ -12,14 +12,14 @@ public class GridPresenter : MonoBehaviour {
 
     public GameObject blockPrefab;
     public GameObject[,,] blocks;
-    private List<Piece> gamePieces = new List<Piece>();
+    private List<PiecePresenter> gamePieces = new List<PiecePresenter>();
 
-    public void addPiece(Piece piece) {
+    public void addPiece(PiecePresenter piece) {
         gamePieces.Add(piece);
     }
 
     public void UpdateShownPieces(GridSlice gridSlice) {
-        foreach(Piece piece in gamePieces) {
+        foreach(PiecePresenter piece in gamePieces) {
             placeItemFor(piece.gameObject, piece.hyperPosition, gridSlice);
         }
     }
