@@ -25,9 +25,13 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         gridPresenter.createGrid(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
         gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
         gridPresenter.UpdateShownPieces(playerPresenter.orientationForDirection(player.direction, player.position));
+
+        GridSlice gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
+        worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
     }
 
     public void process(ButtonInput input) {
+        GridSlice gridSlice;
         switch(input) {
             case ButtonInput.forward:
                 game.process(MoveIntent.forward);
@@ -40,11 +44,15 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
                 break;
             case ButtonInput.unseenLeft:
                 game.process(MoveIntent.turnLeftUnseen);
-                gridPresenter.changeOrientation(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
+                gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
+                worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
+                gridPresenter.changeOrientation(hyperGrid, gridSlice);
                 break;
             case ButtonInput.unseenRight:
                 game.process(MoveIntent.turnRightUnseen);
-                gridPresenter.changeOrientation(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
+                gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
+                worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
+                gridPresenter.changeOrientation(hyperGrid, gridSlice);
                 break;
         }
         //TODO: fix how this is Connected
@@ -56,5 +64,19 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         }
         //TODO: make this work again
         // playerPresenter.rotateToFace(player.direction);
+    }
+
+    public string stringForOrientation(WorldOrientation worldOrientation) {
+        switch (worldOrientation) {
+            case WorldOrientation.xyz:
+            return "X Y Z";
+            case WorldOrientation.yzw:
+            return "W Y Z";
+            case WorldOrientation.xyw:
+            return "X Y W";
+            case WorldOrientation.xzw:
+            return "X W Z";
+        }
+        return "-";
     }
 }
