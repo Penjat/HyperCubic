@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     private Game game;
@@ -10,6 +11,8 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     public GridPresenter gridPresenter;
     public PlayerPresenter playerPresenter;
     public GoalPresenter goalPresenter;
+
+    public Text worldOrientationText;
 
     void Start() {
         HyperPosition startPosition = new HyperPosition(2,3,2,0);
@@ -51,6 +54,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         if(game.checkWon()){
             Debug.Log("You Won!!!!");
         }
+        //TODO: make this work again
         // playerPresenter.rotateToFace(player.direction);
     }
 }
