@@ -33,7 +33,24 @@ public class HyperGrid {
         grid[x, y, z, w] = 1;
     }
 
+    //--------------------Methods for step by step grid creation---------
+    public void createPath(HyperPosition startPosition, Direction direction, int amount) {
+        //Creates a path from one point to another
+        int x = startPosition.x;
+        int y = startPosition.y;
+        int z = startPosition.z;
+        int w = startPosition.w;
+        for(int i=0;i<amount;i++) {
+            setBlocked(x+i,y,z,w);
+        }
+    }
+
     //---------------------Easy Grid Creation, to be removed--------------
+    public static HyperGrid ConstructedLevel(){
+        HyperGrid hyperGrid = new HyperGrid(10,10,10,10);
+        hyperGrid.createPath(new HyperPosition(2,2,2,0),Direction.east,6);
+        return hyperGrid;
+    }
     public static HyperGrid TenByTenPlatformAtWZero() {
         HyperGrid hyperGrid = new HyperGrid(10,10,10,10);
         for(int x=2;x<8;x++){

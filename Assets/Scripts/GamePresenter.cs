@@ -17,7 +17,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     void Start() {
         HyperPosition startPosition = new HyperPosition(2,3,2,0);
         player = new Player(startPosition, HyperDirection.normal);
-        hyperGrid = HyperGrid.TenByTenPyramid();
+        hyperGrid = HyperGrid.ConstructedLevel();
         goalPresenter.hyperPosition = new HyperPosition(6,3,2,0);
         gridPresenter.addPiece(goalPresenter);
         game = new Game(player, hyperGrid,goalPresenter.hyperPosition);
