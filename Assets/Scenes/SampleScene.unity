@@ -829,6 +829,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135729555}
   m_CullTransparentMesh: 1
+--- !u!114 &1406886416 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2177021119011260783, guid: 43da1ae37cad04b28b012c584132d94b, type: 3}
+  m_PrefabInstance: {fileID: 8324946980940420202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a386725ddc294cd8a4555164b9c5da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1468437583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPresenter: {fileID: 1678301261}
   playerPresenter: {fileID: 404606500}
-  goalPresenter: {fileID: 0}
+  goalPresenter: {fileID: 1406886416}
 --- !u!4 &1678301260
 Transform:
   m_ObjectHideFlags: 0
@@ -1783,7 +1794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3748810268975733251, guid: 43da1ae37cad04b28b012c584132d94b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43da1ae37cad04b28b012c584132d94b, type: 3}
