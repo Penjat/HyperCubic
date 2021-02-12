@@ -25,7 +25,7 @@ public class GridPresenter : MonoBehaviour {
     }
 
     public void createGrid(HyperGrid hyperGrid, GridSlice slice) {
-        blocks = new GameObject[10,10,10];
+        blocks = new GameObject[Constants.sizeX,Constants.sizeY,Constants.sizeZ];
         for(int x=0;x<Constants.sizeX;x++){
             for(int y=0;y<Constants.sizeY;y++){
                 for(int z=0;z<Constants.sizeZ;z++){
