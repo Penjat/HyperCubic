@@ -97,6 +97,10 @@ public class HyperGrid {
     public static HyperGrid ConstructedLevel(){
         HyperGrid hyperGrid = new HyperGrid(10,10,10,10);
         hyperGrid.createPath(new HyperPosition(2,2,2,0),Direction.east,6);
+        hyperGrid.createPath(new HyperPosition(2,2,2,0),Direction.north,6);
+        hyperGrid.createPath(new HyperPosition(2,2,7,0),Direction.east,6);
+        hyperGrid.createPath(new HyperPosition(2,2,2,0),Direction.left,6);
+        hyperGrid.createPath(new HyperPosition(7,2,7,0),Direction.up,6);
         return hyperGrid;
     }
     public static HyperGrid TenByTenPlatformAtWZero() {

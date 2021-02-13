@@ -1241,6 +1241,7 @@ MonoBehaviour:
   gridPresenter: {fileID: 1678301261}
   playerPresenter: {fileID: 404606500}
   goalPresenter: {fileID: 1406886416}
+  worldOrientationText: {fileID: 2104594218}
 --- !u!4 &1678301260
 Transform:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using UnityEngine.TestTools;
 public class HyperGridCreationTests {
     // A Test behaves as an ordinary method
     [Test]
-    public void HyperGridCreationTestsSimplePasses() {
+    public void CreatePathToEast() {
         HyperGrid hyperGrid = new HyperGrid(10,10,10,10);
 
         hyperGrid.createPath(new HyperPosition(0,0,0,0),Direction.east,7);
@@ -24,5 +24,22 @@ public class HyperGridCreationTests {
         Assert.IsFalse(hyperGrid.checkBlocked(8,0,0,0));
         Assert.IsFalse(hyperGrid.checkBlocked(0,1,0,0));
         Assert.IsFalse(hyperGrid.checkBlocked(0,0,1,0));
+    }
+
+    [Test]
+    public void CreatePathToUp() {
+        HyperGrid hyperGrid = new HyperGrid(10,10,10,10);
+
+        hyperGrid.createPath(new HyperPosition(0,0,0,0),Direction.up,7);
+
+        Assert.IsTrue(hyperGrid.checkBlocked(0,0,0,0));
+        Assert.IsTrue(hyperGrid.checkBlocked(0,1,0,0));
+        Assert.IsTrue(hyperGrid.checkBlocked(0,2,0,0));
+        Assert.IsTrue(hyperGrid.checkBlocked(0,3,0,0));
+        Assert.IsTrue(hyperGrid.checkBlocked(0,4,0,0));
+        Assert.IsTrue(hyperGrid.checkBlocked(0,5,0,0));
+        Assert.IsTrue(hyperGrid.checkBlocked(0,6,0,0));
+
+        Assert.IsFalse(hyperGrid.checkBlocked(0,7,0,0));
     }
 }
