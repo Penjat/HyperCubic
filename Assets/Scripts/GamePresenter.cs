@@ -105,8 +105,8 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever, IMenuPresenter
         return levelDatabase.levels.Length;
     }
 
-    public void loadLevel() {
-        level = levelDatabase.levels[2];
+    public void loadLevel(int levelNumber) {
+        level = levelDatabase.levels[levelNumber];
         StartLevel(level);
     }
 }

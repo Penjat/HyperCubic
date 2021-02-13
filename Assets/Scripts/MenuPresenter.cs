@@ -17,11 +17,13 @@ public class MenuPresenter : MonoBehaviour {
         for(int i=0;i<reciever.numberOfLevels();i++){
             Button button = Instantiate(levelButtonPrefab);
             button.transform.parent = buttonContainer;
-            button.onClick.AddListener(pressedButton);
+            int buttonNumber = i;
+            button.onClick.AddListener(() => { pressedButton(buttonNumber); });
         }
     }
-    public void pressedButton(){
-        reciever.loadLevel();
+    public void pressedButton(int buttonNumber){
+        Debug.Log("Pressed " + buttonNumber);
+        reciever.loadLevel(buttonNumber);
         isOpen = false;
         menu.SetActive(false);
     }
@@ -34,5 +36,5 @@ public class MenuPresenter : MonoBehaviour {
 
 public interface IMenuPresenterReciever {
     int numberOfLevels();
-    void loadLevel();
+    void loadLevel(int levelNumber);
 }
