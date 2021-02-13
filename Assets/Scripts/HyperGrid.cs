@@ -33,7 +33,82 @@ public class HyperGrid {
         grid[x, y, z, w] = 1;
     }
 
+    //--------------------Methods for step by step grid creation---------
+    public void createPath(HyperPosition startPosition, Direction direction, int amount) {
+        //Creates a path from one point to another
+        int x = startPosition.x;
+        int y = startPosition.y;
+        int z = startPosition.z;
+        int w = startPosition.w;
+
+        switch (direction){
+            case Direction.east:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x+i,y,z,w);
+            }
+            break;
+
+            case Direction.west:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x-i,y,z,w);
+            }
+            break;
+
+            case Direction.up:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x,y+i,z,w);
+            }
+            break;
+
+            case Direction.down:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x,y-i,z,w);
+            }
+            break;
+
+            case Direction.north:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x,y,z+i,w);
+            }
+            break;
+
+            case Direction.south:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x,y,z-i,w);
+            }
+            break;
+
+            case Direction.left:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x,y,z,w+i);
+            }
+            break;
+
+            case Direction.right:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x,y,z,w-i);
+            }
+            break;
+        }
+    }
+
     //---------------------Easy Grid Creation, to be removed--------------
+    public static HyperGrid ConstructedLevel(){
+        HyperGrid hyperGrid = new HyperGrid(10,10,10,10);
+        hyperGrid.createPath(new HyperPosition(2,2,2,0),Direction.east,6);
+        hyperGrid.createPath(new HyperPosition(2,2,2,0),Direction.north,6);
+        hyperGrid.createPath(new HyperPosition(2,2,7,0),Direction.east,6);
+        hyperGrid.createPath(new HyperPosition(2,2,2,0),Direction.left,6);
+        hyperGrid.createPath(new HyperPosition(7,2,7,0),Direction.up,6);
+        hyperGrid.createPath(new HyperPosition(2,2,7,6),Direction.south,6);
+
+        hyperGrid.createPath(new HyperPosition(2,1,7,5),Direction.up,6);
+
+        hyperGrid.createPath(new HyperPosition(3,6,3,0),Direction.left,6);
+
+        hyperGrid.createPath(new HyperPosition(3,6,4,0),Direction.north,6);
+        return hyperGrid;
+    }
     public static HyperGrid TenByTenPlatformAtWZero() {
         HyperGrid hyperGrid = new HyperGrid(10,10,10,10);
         for(int x=2;x<8;x++){
