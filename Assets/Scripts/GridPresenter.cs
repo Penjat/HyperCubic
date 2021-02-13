@@ -24,22 +24,23 @@ public class GridPresenter : MonoBehaviour {
         }
     }
 
-    public void createGrid(HyperGrid hyperGrid, GridSlice slice) {
+    private void createGrid() {
         blocks = new GameObject[Constants.sizeX,Constants.sizeY,Constants.sizeZ];
         for(int x=0;x<Constants.sizeX;x++){
             for(int y=0;y<Constants.sizeY;y++){
                 for(int z=0;z<Constants.sizeZ;z++){
                 GameObject block = Instantiate(blockPrefab) as GameObject;
                 block.transform.position = new Vector3(x*Constants.gridSpacing,y*Constants.gridSpacing,z*Constants.gridSpacing);
-                block.SetActive(checkBlockedForDirection(hyperGrid,slice.worldOrientation,x,y,z,slice.unseenDepth));
                 blocks[x,y,z] = block;
                 }
             }
         }
     }
 
-    public void changeOrientation(HyperGrid hyperGrid, GridSlice slice){
-        print("is time to change orientation.");
+    public void updateGrid(HyperGrid hyperGrid, GridSlice slice){
+        if(blocks == null) {
+            createGrid();
+        }
         for(int x=0;x<Constants.sizeX;x++){
             for(int y=0;y<Constants.sizeY;y++){
                 for(int z=0;z<Constants.sizeZ;z++){

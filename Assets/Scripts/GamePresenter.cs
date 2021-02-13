@@ -3,32 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
+public class GamePresenter : MonoBehaviour, IPlayerInputReciever, IMenuPresenterReciever {
     private Game game;
     private Player player;
-    private HyperGrid hyperGrid;
+    private Level level;
 
     public GridPresenter gridPresenter;
     public PlayerPresenter playerPresenter;
     public GoalPresenter goalPresenter;
     public BackgroundController backgroundController;
+    public MenuPresenter menuPresenter;
 
     public Text worldOrientationText;
 
-    void Start() {
-        HyperPosition startPosition = new HyperPosition(2,3,2,0);
-        player = new Player(startPosition, HyperDirection.normal);
-        hyperGrid = HyperGrid.ConstructedLevel();
-        goalPresenter.hyperPosition = new HyperPosition(6,3,2,0);
-        gridPresenter.addPiece(goalPresenter);
-        game = new Game(player, hyperGrid,goalPresenter.hyperPosition);
+    private LevelDatabase levelDatabase = new LevelDatabase();
 
-        gridPresenter.createGrid(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
-        gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
-        gridPresenter.UpdateShownPieces(playerPresenter.orientationForDirection(player.direction, player.position));
+    void Start() {
+        level = levelDatabase.levels[0];
+        StartLevel(level);
+    }
+
+    public void StartLevel(Level level){
+        player = new Player(level.playerStart, HyperDirection.normal);
+
+        goalPresenter.hyperPosition = level.goalPosition;
+        gridPresenter.addPiece(goalPresenter);
+        game = new Game(player, level.hyperGrid,goalPresenter.hyperPosition);
+
+
 
         GridSlice gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
         worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
+
+        gridPresenter.updateGrid(level.hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
+        gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
+        gridPresenter.UpdateShownPieces(playerPresenter.orientationForDirection(player.direction, player.position));
         updateScreen(gridSlice.worldOrientation);
     }
 
@@ -48,14 +57,14 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
                 game.process(MoveIntent.turnLeftUnseen);
                 gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
                 worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
-                gridPresenter.changeOrientation(hyperGrid, gridSlice);
+                gridPresenter.updateGrid(level.hyperGrid, gridSlice);
                 updateScreen(gridSlice.worldOrientation);
                 break;
             case ButtonInput.unseenRight:
                 game.process(MoveIntent.turnRightUnseen);
                 gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
                 worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
-                gridPresenter.changeOrientation(hyperGrid, gridSlice);
+                gridPresenter.updateGrid(level.hyperGrid, gridSlice);
                 updateScreen(gridSlice.worldOrientation);
                 break;
         }
@@ -68,6 +77,10 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         }
         //TODO: make this work again
         // playerPresenter.rotateToFace(player.direction);
+    }
+
+    public void ToggleMenu() {
+        menuPresenter.toggleMenu();
     }
 
     public void updateScreen(WorldOrientation worldOrientation){
@@ -86,5 +99,14 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
             return "X W Z";
         }
         return "-";
+    }
+
+    public int numberOfLevels() {
+        return levelDatabase.levels.Length;
+    }
+
+    public void loadLevel(int levelNumber) {
+        level = levelDatabase.levels[levelNumber];
+        StartLevel(level);
     }
 }
