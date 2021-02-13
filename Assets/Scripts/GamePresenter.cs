@@ -18,6 +18,10 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     void Start() {
         LevelDatabase levelDatabase = new LevelDatabase();
         level = levelDatabase.levels[2];
+        StartLevel(level);
+    }
+
+    public void StartLevel(Level level){
         player = new Player(level.playerStart, HyperDirection.normal);
 
         goalPresenter.hyperPosition = level.goalPosition;
