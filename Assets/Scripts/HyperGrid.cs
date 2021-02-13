@@ -34,14 +34,62 @@ public class HyperGrid {
     }
 
     //--------------------Methods for step by step grid creation---------
+
     public void createPath(HyperPosition startPosition, Direction direction, int amount) {
         //Creates a path from one point to another
         int x = startPosition.x;
         int y = startPosition.y;
         int z = startPosition.z;
         int w = startPosition.w;
-        for(int i=0;i<amount;i++) {
-            setBlocked(x+i,y,z,w);
+
+        switch (direction){
+            case Direction.east:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x+i,y,z,w);
+            }
+            break;
+
+            case Direction.west:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x-i,y,z,w);
+            }
+            break;
+
+            case Direction.up:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x,y+i,z,w);
+            }
+            break;
+
+            case Direction.down:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x,y-i,z,w);
+            }
+            break;
+
+            case Direction.north:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x,y,z+i,w);
+            }
+            break;
+
+            case Direction.south:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x+i,y-i,z,w);
+            }
+            break;
+
+            case Direction.left:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x+i,y,z,w+i);
+            }
+            break;
+
+            case Direction.right:
+            for(int i=0;i<amount;i++) {
+                setBlocked(x+i,y,z,w-i);
+            }
+            break;
         }
     }
 
