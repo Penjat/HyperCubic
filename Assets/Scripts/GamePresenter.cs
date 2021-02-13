@@ -29,7 +29,6 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
 
         GridSlice gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
         worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
-        mainCamera.backgroundColor = Color.red;
     }
 
     public void process(ButtonInput input) {
@@ -49,12 +48,14 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
                 gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
                 worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
                 gridPresenter.changeOrientation(hyperGrid, gridSlice);
+                updateScreen(gridSlice.worldOrientation);
                 break;
             case ButtonInput.unseenRight:
                 game.process(MoveIntent.turnRightUnseen);
                 gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
                 worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
                 gridPresenter.changeOrientation(hyperGrid, gridSlice);
+                updateScreen(gridSlice.worldOrientation);
                 break;
         }
         //TODO: fix how this is Connected
@@ -66,6 +67,23 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         }
         //TODO: make this work again
         // playerPresenter.rotateToFace(player.direction);
+    }
+
+    public void updateScreen(WorldOrientation worldOrientation){
+        switch(worldOrientation){
+            case WorldOrientation.xyz:
+            mainCamera.backgroundColor = Color.blue;
+            break;
+            case WorldOrientation.xyw:
+            mainCamera.backgroundColor = Color.green;
+            break;
+            case WorldOrientation.yzw:
+            mainCamera.backgroundColor = Color.red;
+            break;
+            case WorldOrientation.xzw:
+            mainCamera.backgroundColor = Color.yellow;
+            break;
+        }
     }
 
     public string stringForOrientation(WorldOrientation worldOrientation) {
