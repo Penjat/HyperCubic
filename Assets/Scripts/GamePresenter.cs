@@ -11,6 +11,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     public GridPresenter gridPresenter;
     public PlayerPresenter playerPresenter;
     public GoalPresenter goalPresenter;
+    public Camera mainCamera;
 
     public Text worldOrientationText;
 
@@ -28,6 +29,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
 
         GridSlice gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
         worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
+        mainCamera.backgroundColor = Color.red;
     }
 
     public void process(ButtonInput input) {
