@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
+public class GamePresenter : MonoBehaviour, IPlayerInputReciever, IMenuPresenterReciever {
     private Game game;
     private Player player;
     private Level level;
@@ -96,5 +96,13 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
             return "X W Z";
         }
         return "-";
+    }
+
+    public int numberOfLevels() {
+        return 5;
+    }
+
+    public void loadLevel() {
+        Debug.Log("I should load a level.");
     }
 }
