@@ -75,19 +75,19 @@ public class HyperGrid {
 
             case Direction.south:
             for(int i=0;i<amount;i++) {
-                setBlocked(x+i,y-i,z,w);
+                setBlocked(x,y,z-i,w);
             }
             break;
 
             case Direction.left:
             for(int i=0;i<amount;i++) {
-                setBlocked(x+i,y,z,w+i);
+                setBlocked(x,y,z,w+i);
             }
             break;
 
             case Direction.right:
             for(int i=0;i<amount;i++) {
-                setBlocked(x+i,y,z,w-i);
+                setBlocked(x,y,z,w-i);
             }
             break;
         }
