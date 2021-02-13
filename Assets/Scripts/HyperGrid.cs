@@ -34,7 +34,6 @@ public class HyperGrid {
     }
 
     //--------------------Methods for step by step grid creation---------
-
     public void createPath(HyperPosition startPosition, Direction direction, int amount) {
         //Creates a path from one point to another
         int x = startPosition.x;
@@ -102,6 +101,12 @@ public class HyperGrid {
         hyperGrid.createPath(new HyperPosition(2,2,2,0),Direction.left,6);
         hyperGrid.createPath(new HyperPosition(7,2,7,0),Direction.up,6);
         hyperGrid.createPath(new HyperPosition(2,2,7,6),Direction.south,6);
+
+        hyperGrid.createPath(new HyperPosition(2,1,7,5),Direction.up,6);
+
+        hyperGrid.createPath(new HyperPosition(3,6,3,0),Direction.left,6);
+
+        hyperGrid.createPath(new HyperPosition(3,6,4,0),Direction.north,6);
         return hyperGrid;
     }
     public static HyperGrid TenByTenPlatformAtWZero() {
