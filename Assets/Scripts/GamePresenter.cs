@@ -11,7 +11,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     public GridPresenter gridPresenter;
     public PlayerPresenter playerPresenter;
     public GoalPresenter goalPresenter;
-    public Camera mainCamera;
+    public BackgroundController backgroundController;
 
     public Text worldOrientationText;
 
@@ -29,7 +29,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
 
         GridSlice gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
         worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
-        mainCamera.backgroundColor = Color.red;
+        updateScreen(gridSlice.worldOrientation);
     }
 
     public void process(ButtonInput input) {
@@ -49,12 +49,14 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
                 gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
                 worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
                 gridPresenter.changeOrientation(hyperGrid, gridSlice);
+                updateScreen(gridSlice.worldOrientation);
                 break;
             case ButtonInput.unseenRight:
                 game.process(MoveIntent.turnRightUnseen);
                 gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
                 worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
                 gridPresenter.changeOrientation(hyperGrid, gridSlice);
+                updateScreen(gridSlice.worldOrientation);
                 break;
         }
         //TODO: fix how this is Connected
@@ -66,6 +68,10 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         }
         //TODO: make this work again
         // playerPresenter.rotateToFace(player.direction);
+    }
+
+    public void updateScreen(WorldOrientation worldOrientation){
+        backgroundController.setBackgroundForOrientation(worldOrientation);
     }
 
     public string stringForOrientation(WorldOrientation worldOrientation) {

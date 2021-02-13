@@ -725,8 +725,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.46361852, g: 0.19215688, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1219,6 +1219,7 @@ GameObject:
   - component: {fileID: 1678301260}
   - component: {fileID: 1678301259}
   - component: {fileID: 1678301261}
+  - component: {fileID: 1678301262}
   m_Layer: 0
   m_Name: MainManager
   m_TagString: Untagged
@@ -1241,6 +1242,7 @@ MonoBehaviour:
   gridPresenter: {fileID: 1678301261}
   playerPresenter: {fileID: 404606500}
   goalPresenter: {fileID: 1406886416}
+  backgroundController: {fileID: 1678301262}
   worldOrientationText: {fileID: 2104594218}
 --- !u!4 &1678301260
 Transform:
@@ -1271,6 +1273,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 8182602661074816494, guid: 04e262f1a14ad434b832a49da4d9bbfe, type: 3}
+--- !u!114 &1678301262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678301258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd8f8d0c40c64133adadd7ca30d3586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundCamera: {fileID: 963194227}
 --- !u!1 &1729235528
 GameObject:
   m_ObjectHideFlags: 0
