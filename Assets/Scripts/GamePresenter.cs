@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     private Game game;
     private Player player;
-    private HyperGrid hyperGrid;
+    private Level level;
 
     public GridPresenter gridPresenter;
     public PlayerPresenter playerPresenter;
@@ -18,12 +18,14 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     void Start() {
         HyperPosition startPosition = new HyperPosition(2,3,2,0);
         player = new Player(startPosition, HyperDirection.normal);
-        hyperGrid = HyperGrid.ConstructedLevel();
+
+        LevelDatabase levelDatabase = new LevelDatabase();
+        level = levelDatabase.getLevel();
         goalPresenter.hyperPosition = new HyperPosition(6,3,2,0);
         gridPresenter.addPiece(goalPresenter);
-        game = new Game(player, hyperGrid,goalPresenter.hyperPosition);
+        game = new Game(player, level.hyperGrid,goalPresenter.hyperPosition);
 
-        gridPresenter.createGrid(hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
+        gridPresenter.createGrid(level.hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
         gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
         gridPresenter.UpdateShownPieces(playerPresenter.orientationForDirection(player.direction, player.position));
 
@@ -48,14 +50,14 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
                 game.process(MoveIntent.turnLeftUnseen);
                 gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
                 worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
-                gridPresenter.changeOrientation(hyperGrid, gridSlice);
+                gridPresenter.changeOrientation(level.hyperGrid, gridSlice);
                 updateScreen(gridSlice.worldOrientation);
                 break;
             case ButtonInput.unseenRight:
                 game.process(MoveIntent.turnRightUnseen);
                 gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
                 worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
-                gridPresenter.changeOrientation(hyperGrid, gridSlice);
+                gridPresenter.changeOrientation(level.hyperGrid, gridSlice);
                 updateScreen(gridSlice.worldOrientation);
                 break;
         }
