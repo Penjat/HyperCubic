@@ -1286,6 +1286,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundCamera: {fileID: 963194227}
+  xyzColor: {r: 0.094562106, g: 0.6998113, b: 0.8018868, a: 1}
+  wyzColor: {r: 0.7735849, g: 0.6080411, b: 0.12041653, a: 0}
+  xwzColor: {r: 0.8490566, g: 0.1481844, b: 0.7463527, a: 0}
+  xywColor: {r: 0.70428544, g: 0.8962264, b: 0.097232126, a: 0}
 --- !u!1 &1729235528
 GameObject:
   m_ObjectHideFlags: 0
