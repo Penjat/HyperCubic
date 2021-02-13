@@ -22,6 +22,8 @@ public class MenuPresenter : MonoBehaviour {
     }
     public void pressedButton(){
         reciever.loadLevel();
+        isOpen = false;
+        menu.SetActive(false);
     }
 
     public void toggleMenu() {

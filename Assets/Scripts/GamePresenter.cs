@@ -16,8 +16,9 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever, IMenuPresenter
 
     public Text worldOrientationText;
 
+    private LevelDatabase levelDatabase = new LevelDatabase();
+
     void Start() {
-        LevelDatabase levelDatabase = new LevelDatabase();
         level = levelDatabase.levels[0];
         StartLevel(level);
     }
@@ -29,12 +30,14 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever, IMenuPresenter
         gridPresenter.addPiece(goalPresenter);
         game = new Game(player, level.hyperGrid,goalPresenter.hyperPosition);
 
-        gridPresenter.createGrid(level.hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
-        gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
-        gridPresenter.UpdateShownPieces(playerPresenter.orientationForDirection(player.direction, player.position));
+
 
         GridSlice gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
         worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
+
+        gridPresenter.updateGrid(level.hyperGrid, playerPresenter.orientationForDirection(player.direction, player.position));
+        gridPresenter.placeSomething(playerPresenter.gameObject,player.position.x,player.position.y,player.position.z);
+        gridPresenter.UpdateShownPieces(playerPresenter.orientationForDirection(player.direction, player.position));
         updateScreen(gridSlice.worldOrientation);
     }
 
@@ -54,14 +57,14 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever, IMenuPresenter
                 game.process(MoveIntent.turnLeftUnseen);
                 gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
                 worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
-                gridPresenter.changeOrientation(level.hyperGrid, gridSlice);
+                gridPresenter.updateGrid(level.hyperGrid, gridSlice);
                 updateScreen(gridSlice.worldOrientation);
                 break;
             case ButtonInput.unseenRight:
                 game.process(MoveIntent.turnRightUnseen);
                 gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
                 worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
-                gridPresenter.changeOrientation(level.hyperGrid, gridSlice);
+                gridPresenter.updateGrid(level.hyperGrid, gridSlice);
                 updateScreen(gridSlice.worldOrientation);
                 break;
         }
@@ -99,10 +102,11 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever, IMenuPresenter
     }
 
     public int numberOfLevels() {
-        return 5;
+        return levelDatabase.levels.Length;
     }
 
     public void loadLevel() {
-        Debug.Log("I should load a level.");
+        level = levelDatabase.levels[2];
+        StartLevel(level);
     }
 }
