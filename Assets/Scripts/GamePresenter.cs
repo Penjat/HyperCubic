@@ -11,7 +11,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     public GridPresenter gridPresenter;
     public PlayerPresenter playerPresenter;
     public GoalPresenter goalPresenter;
-    public Camera mainCamera;
+    public BackgroundController backgroundController;
 
     public Text worldOrientationText;
 
@@ -29,6 +29,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
 
         GridSlice gridSlice = playerPresenter.orientationForDirection(player.direction, player.position);
         worldOrientationText.text = stringForOrientation(gridSlice.worldOrientation);
+        updateScreen(gridSlice.worldOrientation);
     }
 
     public void process(ButtonInput input) {
@@ -70,20 +71,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     }
 
     public void updateScreen(WorldOrientation worldOrientation){
-        switch(worldOrientation){
-            case WorldOrientation.xyz:
-            mainCamera.backgroundColor = Color.blue;
-            break;
-            case WorldOrientation.xyw:
-            mainCamera.backgroundColor = Color.green;
-            break;
-            case WorldOrientation.yzw:
-            mainCamera.backgroundColor = Color.red;
-            break;
-            case WorldOrientation.xzw:
-            mainCamera.backgroundColor = Color.yellow;
-            break;
-        }
+        backgroundController.setBackgroundForOrientation(worldOrientation);
     }
 
     public string stringForOrientation(WorldOrientation worldOrientation) {
