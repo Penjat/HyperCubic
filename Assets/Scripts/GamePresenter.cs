@@ -20,7 +20,7 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         player = new Player(startPosition, HyperDirection.normal);
 
         LevelDatabase levelDatabase = new LevelDatabase();
-        level = levelDatabase.getLevel();
+        level = levelDatabase.levels[2];
         goalPresenter.hyperPosition = new HyperPosition(6,3,2,0);
         gridPresenter.addPiece(goalPresenter);
         game = new Game(player, level.hyperGrid,goalPresenter.hyperPosition);
