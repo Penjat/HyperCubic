@@ -16,12 +16,11 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     public Text worldOrientationText;
 
     void Start() {
-        HyperPosition startPosition = new HyperPosition(2,3,2,0);
-        player = new Player(startPosition, HyperDirection.normal);
-
         LevelDatabase levelDatabase = new LevelDatabase();
         level = levelDatabase.levels[2];
-        goalPresenter.hyperPosition = new HyperPosition(6,3,2,0);
+        player = new Player(level.playerStart, HyperDirection.normal);
+
+        goalPresenter.hyperPosition = level.goalPosition;
         gridPresenter.addPiece(goalPresenter);
         game = new Game(player, level.hyperGrid,goalPresenter.hyperPosition);
 
