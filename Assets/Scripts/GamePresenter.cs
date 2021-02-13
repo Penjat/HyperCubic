@@ -12,12 +12,13 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
     public PlayerPresenter playerPresenter;
     public GoalPresenter goalPresenter;
     public BackgroundController backgroundController;
+    public MenuPresenter menuPresenter;
 
     public Text worldOrientationText;
 
     void Start() {
         LevelDatabase levelDatabase = new LevelDatabase();
-        level = levelDatabase.levels[2];
+        level = levelDatabase.levels[0];
         StartLevel(level);
     }
 
@@ -73,6 +74,10 @@ public class GamePresenter : MonoBehaviour, IPlayerInputReciever {
         }
         //TODO: make this work again
         // playerPresenter.rotateToFace(player.direction);
+    }
+
+    public void ToggleMenu() {
+        menuPresenter.toggleMenu();
     }
 
     public void updateScreen(WorldOrientation worldOrientation){
